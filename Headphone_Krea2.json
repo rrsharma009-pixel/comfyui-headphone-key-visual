@@ -1,0 +1,835 @@
+{
+  "id": "96dd0275-07f7-4963-805c-630cdf19b7c3",
+  "revision": 0,
+  "last_node_id": 36,
+  "last_link_id": 505,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        -1447.2795493681601,
+        166.0643903661248
+      ],
+      "size": [
+        270,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            36
+          ]
+        }
+      ],
+      "title": "UNET Loader - Krea2 Turbo FP8",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "Krea2\\krea2_turbo_fp8_scaled.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "Krea2\\krea2_turbo_fp8_scaled.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 13,
+      "type": "CLIPLoader",
+      "pos": [
+        -1447.1036630116782,
+        306.22978666370824
+      ],
+      "size": [
+        270,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            37
+          ]
+        }
+      ],
+      "title": "CLIP Loader - Krea2",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "CLIPLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "qwen3VL4BAbliteratedComfyui_v10.safetensors",
+        "krea2",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3VL4BAbliteratedComfyui_v10.safetensors",
+        "type": "krea2",
+        "device": "default"
+      }
+    },
+    {
+      "id": 27,
+      "type": "Anything Everywhere",
+      "pos": [
+        -1021.6110775052422,
+        306.61476475684634
+      ],
+      "size": [
+        181.36665954589844,
+        106
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "color_on": "#B39DDB",
+          "label": "MODEL",
+          "name": "anything",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 36
+        },
+        {
+          "color_on": "#FFD500",
+          "label": "CLIP",
+          "name": "anything11",
+          "type": "CLIP",
+          "link": 37
+        },
+        {
+          "color_on": "#FF6E6E",
+          "label": "VAE",
+          "name": "anything12",
+          "type": "VAE",
+          "link": 38
+        },
+        {
+          "color_on": "#FF9CF9",
+          "label": "LATENT",
+          "name": "anything13",
+          "type": "LATENT",
+          "link": 435
+        },
+        {
+          "label": "anything",
+          "name": "anything14",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "cg-use-everywhere",
+        "ver": "7.8.0",
+        "Node name for S&R": "Anything Everywhere",
+        "ue_properties": {
+          "version": "7.8",
+          "group_restricted": 0,
+          "color_restricted": 0,
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "title_regex": null,
+          "input_regex": null,
+          "group_regex": null,
+          "title_regex_invert": false,
+          "input_regex_invert": false,
+          "group_regex_invert": false,
+          "repeated_type_rule": 0,
+          "apply_to_unrepeated": 0,
+          "string_to_combo": 0,
+          "send_to_any": 0,
+          "next_input_index": 14
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        69.3020510795837,
+        346.22978666370824
+      ],
+      "size": [
+        230,
+        50
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            8
+          ]
+        }
+      ],
+      "title": "Negative (Zero Out)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "ConditioningZeroOut",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "VAEDecode",
+      "pos": [
+        833.9744648090364,
+        219.14068549703495
+      ],
+      "size": [
+        230,
+        80
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 476
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "VAEDecode",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "VAELoader",
+      "pos": [
+        -1436.6789717822546,
+        479.14068549703495
+      ],
+      "size": [
+        270,
+        80
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            38
+          ]
+        }
+      ],
+      "title": "VAE Loader",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "VAELoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "qwen_image_vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_vae.safetensors"
+      }
+    },
+    {
+      "id": 10,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -1424.4688836718676,
+        623.7268723084612
+      ],
+      "size": [
+        230,
+        110
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            435
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "EmptyLatentImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        1920,
+        1080,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 1920,
+        "height": 1080,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 2,
+      "type": "KSampler",
+      "pos": [
+        264.2465895530225,
+        219.14068549703495
+      ],
+      "size": [
+        542.9666809082031,
+        302.9124926339317
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 497
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 39
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            476
+          ]
+        }
+      ],
+      "title": "⏳ 100% │ ⏳ 100% │ ⏳ 100% │ ⏳ 100% │ ⏳ 100% │ ⏳ 100% │ ⏳ 100% │ KSampler",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "KSampler",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        50,
+        "fixed",
+        16,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 50,
+        "control_after_generate": "fixed",
+        "steps": 16,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 26,
+      "type": "SaveImage",
+      "pos": [
+        833.9744648090364,
+        464.89563133729297
+      ],
+      "size": [
+        387.9899477234969,
+        374.8799535319974
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 33
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "SaveImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "HeadPhone"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "HeadPhone"
+      }
+    },
+    {
+      "id": 5,
+      "type": "PreviewImage",
+      "pos": [
+        1253.1842250920445,
+        145.06872227647588
+      ],
+      "size": [
+        974.8160394770963,
+        1312.7526139757283
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            33
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "PreviewImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -501.92794491307427,
+        237.95026971855245
+      ],
+      "size": [
+        527.99683298781,
+        562.380831556965
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            12,
+            39
+          ]
+        }
+      ],
+      "title": "Positive Prompt",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "CLIPTextEncode",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "A cinematic, premium key visual for the wireless headphone brand,serving as the hero product on the right-hand side of a 16:9 landscape framing. A cinematic three-quarter view of the matte-black and brushed-gold wireless headphones, showcasing their premium materials like textured leather on the headband, memory foam ear cups, and metallic joints. The headphones hover gracefully just above a dark, wet-reflective surface.\n\nFrom the ear cups, mesmerizing, cinematic waves of stardust, cosmic nebula gases in deep indigo, violet, and gold, and glowing digital audio-frequency waves spiral and ripple outward into the darkness, visually representing immersive sound and modern technology. The atmosphere is filled with natural, fine particles of light and mist catching dramatic, cinematic rim and edge-lighting.\n\nThe background is a vast, dark, atmospheric environment, beautifully blurred with a shallow depth of field, fading into deep shadows on the left third of the image to provide ample and uncluttered negative space for typography. The shot possesses the high-end quality of a professional product advertisement, with natural lens flare and bokeh, entirely free of watermarks, signatures, or accidental text.",
+        "75 / 77 tokens"
+      ],
+      "widgets_values_named": {
+        "text": "A cinematic, premium key visual for the wireless headphone brand,serving as the hero product on the right-hand side of a 16:9 landscape framing. A cinematic three-quarter view of the matte-black and brushed-gold wireless headphones, showcasing their premium materials like textured leather on the headband, memory foam ear cups, and metallic joints. The headphones hover gracefully just above a dark, wet-reflective surface.\n\nFrom the ear cups, mesmerizing, cinematic waves of stardust, cosmic nebula gases in deep indigo, violet, and gold, and glowing digital audio-frequency waves spiral and ripple outward into the darkness, visually representing immersive sound and modern technology. The atmosphere is filled with natural, fine particles of light and mist catching dramatic, cinematic rim and edge-lighting.\n\nThe background is a vast, dark, atmospheric environment, beautifully blurred with a shallow depth of field, fading into deep shadows on the left third of the image to provide ample and uncluttered negative space for typography. The shot possesses the high-end quality of a professional product advertisement, with natural lens flare and bokeh, entirely free of watermarks, signatures, or accidental text.",
+        "tokens": "75 / 77 tokens"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 32,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -423.4030060564421,
+        124.0643903661248
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            497
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "Krea2\\galaxyace_krea2.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "Krea2\\galaxyace_krea2.safetensors",
+        "strength_model": 1
+      }
+    },
+    {
+      "id": 35,
+      "type": "Note",
+      "pos": [
+        -2266.1324141998784,
+        103.70077364555146
+      ],
+      "size": [
+        764.3447811348742,
+        269.9352513749364
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "MODELS\n\n\n  Krea2 GGUF - https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors\n\n\n\n   Krea2 clip- https://huggingface.co/cusiman/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy/blob/main/Huihui-Qwen3-VL-4B-Instruct-abliterated-fp8_scaled.safetensors\n\n\n     Krea2 VAE- https://huggingface.co/QuantStack/Qwen-Image-Edit-GGUF/blob/5cf642dd2b94af2a558ec06a9dde255c673e1fdf/VAE/Qwen_Image-VAE.safetensors\n\n\n"
+      ],
+      "widgets_values_named": {
+        "text": "MODELS\n\n\n  Krea2 GGUF - https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors\n\n\n\n   Krea2 clip- https://huggingface.co/cusiman/Huihui-Qwen3-VL-4B-Instruct-abliterated-comfy/blob/main/Huihui-Qwen3-VL-4B-Instruct-abliterated-fp8_scaled.safetensors\n\n\n     Krea2 VAE- https://huggingface.co/QuantStack/Qwen-Image-Edit-GGUF/blob/5cf642dd2b94af2a558ec06a9dde255c673e1fdf/VAE/Qwen_Image-VAE.safetensors\n\n\n"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      4,
+      3,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      8,
+      0,
+      2,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      12,
+      6,
+      0,
+      8,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      33,
+      5,
+      0,
+      26,
+      0,
+      "IMAGE"
+    ],
+    [
+      36,
+      1,
+      0,
+      27,
+      0,
+      "MODEL"
+    ],
+    [
+      37,
+      13,
+      0,
+      27,
+      1,
+      "CLIP"
+    ],
+    [
+      38,
+      4,
+      0,
+      27,
+      2,
+      "VAE"
+    ],
+    [
+      39,
+      6,
+      0,
+      2,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      435,
+      10,
+      0,
+      27,
+      3,
+      "LATENT"
+    ],
+    [
+      476,
+      2,
+      0,
+      3,
+      0,
+      "LATENT"
+    ],
+    [
+      497,
+      32,
+      0,
+      2,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Krea 2_Workflow",
+      "bounding": [
+        -600,
+        60,
+        2867.9489296180727,
+        1421.7921225659386
+      ],
+      "color": "#A88",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Models",
+      "bounding": [
+        -1475.9600082560075,
+        73.70077364555146,
+        757.9700605325106,
+        722.389715383483
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0152559799477079,
+      "offset": [
+        723.0012451573651,
+        9.80417945950655
+      ]
+    },
+    "workflow_notes": "Native ComfyUI 0.25.0+ Krea2 workflow. Uses official CLIPLoader/UNETLoader nodes. Requires 3 model files (see Note node).",
+    "frontendVersion": "1.54.8",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "ue_links": [
+      {
+        "downstream": "3",
+        "downstream_slot": 1,
+        "upstream": "4",
+        "upstream_slot": 0,
+        "controller": "27",
+        "type": "VAE"
+      },
+      {
+        "downstream": "2",
+        "downstream_slot": 3,
+        "upstream": "10",
+        "upstream_slot": 0,
+        "controller": "27",
+        "type": "LATENT"
+      },
+      {
+        "downstream": "6",
+        "downstream_slot": 0,
+        "upstream": "13",
+        "upstream_slot": 0,
+        "controller": "27",
+        "type": "CLIP"
+      },
+      {
+        "downstream": "32",
+        "downstream_slot": 0,
+        "upstream": "1",
+        "upstream_slot": 0,
+        "controller": "27",
+        "type": "MODEL"
+      }
+    ],
+    "links_added_by_ue": [
+      502,
+      503,
+      504,
+      505
+    ],
+    "mec_sticky_notes": []
+  },
+  "version": 0.4,
+  "seed_widgets": {
+    "2": 0
+  }
+}
